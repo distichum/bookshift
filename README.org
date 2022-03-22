@@ -1,0 +1,58 @@
+#+TITLE: bookshift.py - Predictable Library Book Shifting
+#+AUTHOR: Joshua Lambert
+
+* Introduction
+The bookshift.py script provides data that allows library staff to complete predictable library book shifts.
+
+Predictable books shifts require planning and data collection ahead of time. Library staff must collect measurements of books as they currently sit on the shelves. They must also collect measurements of shelves in the future location. Optionally, library staff may specify imposed fill ratios for collections of books that will be shifted.
+
+This script requires specific input to work. It requires two comma separated files with the option of using a third. File requirements are below. It is easiest to make these files in a spreadsheet and then to export them to CSV. The files must be named the same as the sample files provided with the script.
+
+* Files to import
+** current.csv
+This file describes your current arrangement of shelves and books. The following example shows required column names. For a longer example using actual data, see the sample current.csv file. The data is shown in in a table format but the file must be csv.
+- measure: The units of books measured on the shelf. Examples are in inches.
+- sctn_increment: place an x here if this is the first shelf of a section.
+- call_num: The call number of the first book on that shelf.
+  - This field must only have a call number in it for the first book on the first section of the first shelf of the range. The field doubles as a range_increment field. If there is not a book on this shelf, write "No book" or "N/A". The script recognizes either any string of characters or none.
+- col_num: Collection number of the books on that shelf. Unless you plan to use imposed fill ratios, all rows should be "1".
+
+|measure      |sctn_increment   |call_num            |col_num            |
+|-------------+-----------------+--------------------+-------------------|
+|35           |x                |A 1.3: M35          |1                  |
+|28           |                 |                    |1                  |
+|15           |                 |                    |1                  |
+|35           |                 |                    |1                  |
+
+** future.csv
+This file describes the future arrangement of shelves. See the example future.csv file provided with the script for a real world example.
+- shelf_measure: measurement of the shelf space that could be occupied by books.
+- sctn_increment: place an x here if this is the first shelf of a section.
+- range_increment: place an x here if this is the first shelf of a range.
+
+|shelf_measure  |sctn_increment |range_increment|
+|---------------+---------------+---------------|
+|35.5           |x              |c              |
+|35.5           |               |               |
+|35.5           |               |               |
+|35.5           |               |               |
+
+** set_descriptions.csv
+This file describes one or more sets of books and whether you want to impose fill ratios on that set.
+- set_num: set number; They should be listed starting with 1 and ending with your last set number. These must be consecutive integers.
+- imposed_fill_ratio: The fill ratio you will impose on a set. You can define as many sets as you want, but the script works best if you leave a generous percentage of the books in "unimposed" sets.
+
+|set_num        |imposed_fill_ratio|
+|---------------+------------------|
+|1              |                  |
+|2              |0.65              |
+|3              |0.7               |
+|4              |                  |
+
+* Definitions
+- shelf: the horizontal structure that books sit on
+- section: a vertical group of shelves of similar size stacked above each other with space between them for books.
+- range: a group of sections, attached to each other, forming a line on the floor. Ranges are arranged in parallel with aisles between them for people to walk down and look at the books.
+- fill ratio: mathematically, the measure of books on a shelf divided by the measure of books that could be on the shelf if it were full.
+- imposed fill ratio: a fill ratio chosen by a person, irregardless of what the fill ratios are for other collections  
+- collection: a contiguous set of books that have the same future fill ratio.
