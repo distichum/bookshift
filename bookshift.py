@@ -2,7 +2,6 @@
 # -*- coding: utf-8 -*-
 """
 @author: Joshua Lambert; Missouri State University Libraries
-@email: jlambert@missouristate.edu
 """
 import sys
 from pathlib import Path
