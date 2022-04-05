@@ -10,7 +10,7 @@ This script requires specific input to work. It requires two comma separated fil
 
 * Files to import
 ** current.csv
-This file describes your current arrangement of shelves and books. The following example shows required column names. For a longer example using actual data, see the sample current.csv file. The data is shown in in a table format but the file must be csv.
+This file describes your current arrangement of shelves and books. The following example shows required column names. For a longer example using actual data, see the sample current.csv file. The data is shown in a table format but the file must be csv.
 - measure: The units of books measured on the shelf. Examples are in inches.
 - sctn_increment: place an x here if this is the first shelf of a section.
 - call_num: The call number of the first book on that shelf.
@@ -52,7 +52,7 @@ This file describes one or more sets of books and whether you want to impose fil
 * Definitions
 - shelf: the horizontal structure that books sit on
 - section: a vertical group of shelves of similar size stacked above each other with space between them for books.
-- range: a group of sections, attached to each other, forming a line on the floor. Ranges are arranged in parallel with aisles between them for people to walk down and look at the books.
+- range: a group of sections, attached to each other, forming a line. Ranges are arranged in parallel with aisles between them for people to walk down and look at the books.
 - fill ratio: mathematically, the measure of books on a shelf divided by the measure of books that could be on the shelf if it were full.
 - imposed fill ratio: a fill ratio chosen by a person, irregardless of what the fill ratios are for other collections  
 - collection: a contiguous set of books that have the same future fill ratio.
