@@ -2,15 +2,27 @@
 #+AUTHOR: Joshua Lambert
 
 * Introduction
-The bookshift.py script provides data that allows library staff to complete predictable library book shifts.
+The bookshift.py script provides data that allows library staff to complete predictable library book shifts. It can do that only when someone creates appropriate data files for the script to read. The following instructions seek to explain what to do to get usable data.
 
 Predictable books shifts require planning and data collection ahead of time. Library staff must collect measurements of books as they currently sit on the shelves. They must also collect measurements of shelves in the future location. Optionally, library staff may specify imposed fill ratios for collections of books that will be shifted.
 
 This script requires specific input to work. It requires two comma separated files with the option of using a third. File requirements are below. It is easiest to make these files in a spreadsheet and then to export them to CSV. The files must be named the same as the sample files provided with the script.
 
-* Files to import
+bookshift.py will add data to the imported csv files and then create new csv files with the added data. Following is a sample of two columns from one of the exported files.
+
+| shelf_num | pretty_waypoint                                            |
+|-----------+------------------------------------------------------------|
+|         1 | The last book from this shelf goes 24.0 in/cm into shelf 1 |
+|         2 | The last book from this shelf goes 18.9 in/cm into shelf 2 |
+|         3 | The last book from this shelf goes 17.9 in/cm into shelf 3 |
+
+* Installation
+Simply copy the bookshift.py file to a location where you can execute a python file. This script looks for a subdirectory by the name of "files-to-import" with three files in it: current.csv, future.csv, and collections.csv. If you know how to use Git, then it may be easiest to clone the repository and work within the resulting directory. The resulting directory will already contain the "files-to-import" directory with five test files. Execute bookshipt.py and it should create a "export-data" directory with the resulting files. That will confirm the script works and now you can create your own csv files from shelving data and replace the files as stated below.
+
+A person can also just download the bookshift.py file, create a subdirectory named "files-to-import" and place their three relevant data CSV files in that directory. If you do so and you don't want to use imposed fill ratios, then you must also download the "no_collections.csv" file from the code repository to your "files-to-import" directory.
+* Data files
 ** current.csv
-This file describes your current arrangement of shelves and books. The following example shows required column names. For a longer example using actual data, see the sample current.csv file. The data is shown in a table format but the file must be csv.
+This file describes your current arrangement of shelves and books. The following example shows required column names. For a longer example using actual data, see the sample current.csv file. The data is shown in in a table format but the file must be csv.
 - measure: The units of books measured on the shelf. Examples are in inches.
 - sctn_increment: place an x here if this is the first shelf of a section.
 - call_num: The call number of the first book on that shelf.
@@ -52,7 +64,7 @@ This file describes one or more sets of books and whether you want to impose fil
 * Definitions
 - shelf: the horizontal structure that books sit on
 - section: a vertical group of shelves of similar size stacked above each other with space between them for books.
-- range: a group of sections, attached to each other, forming a line. Ranges are arranged in parallel with aisles between them for people to walk down and look at the books.
-- fill ratio: mathematically, the measure of books on a shelf divided by the measure of books that could be on the shelf if it were full.
-- imposed fill ratio: a fill ratio chosen by a person, irregardless of what the fill ratios are for other collections  
+- range: a group of sections, attached to each other, forming a line on the floor. Ranges are arranged in parallel with aisles between them for people to walk down and look at the books.
+- fill ratio: the measure of books on a shelf divided by the measure of books that could be on the shelf if it were full.
+- imposed fill ratio: a fill ratio defined not by a calculation but by a person's judgment, irregardless of what the fill ratios are for other collections
 - collection: a contiguous set of books that have the same future fill ratio.
