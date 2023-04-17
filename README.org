@@ -1,6 +1,8 @@
 #+TITLE: bookshift.py - Predictable Library Book Shifting
 #+AUTHOR: Joshua Lambert
 
+*See the bottom of this page for links to the author's related research and/or publications.
+
 * Introduction
 The bookshift.py script provides data that allows library staff to complete predictable library book shifts. It can do that only when someone creates appropriate data files for the script to read. The following instructions how to create usable data.
 
