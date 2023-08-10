@@ -76,5 +76,5 @@ This file describes one or more sets of books and whether you want to impose fil
 Below, you can find further similar research by the author.
 - Evidence-based library book shifting - https://doi.org/10.1080/15367967.2023.2172416
   - Research data spreadsheet - https://osf.io/8m3cu/
-    - Research data DOI - DOI 10.17605/OSF.IO/8M3CU
+    - Research data DOI - https://doi.org/10.17605/OSF.IO/8M3CU
   - For librarians not comfortable using Python, the linked spreadsheet at OSF can provide similar results using a different tool.
